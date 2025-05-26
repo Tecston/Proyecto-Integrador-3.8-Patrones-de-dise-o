@@ -1,19 +1,67 @@
-# Proyecto: Sistema de procesamiento modular con patrones de diseño
+# 🧾 Generador de Reportes PDF desde CSV
 
-## Patrones implementados
+Este proyecto permite generar reportes PDF automáticamente a partir de un archivo CSV, utilizando **Streamlit** como interfaz de usuario y **ReportLab** para el diseño de los reportes.
 
-### 1. Singleton (Creacional)
-**Problema:** Necesitábamos una única configuración global del sistema.  
-**Solución:** Usamos el patrón Singleton para asegurar una única instancia.
+---
 
-### 2. Adapter (Estructural)
-**Problema:** Integrar un sistema legado con nueva lógica.  
-**Solución:** Adaptamos la interfaz con un adaptador externo.
+## 🚀 Características
 
-### 3. Strategy (Comportamiento)
-**Problema:** Procesar pagos de distintas maneras.  
-**Solución:** Usamos estrategias intercambiables para pagos.
+- ✅ Subida de archivos CSV (hasta 200MB).
+- ✅ Generación automática de reportes PDF con formato personalizado.
+- ✅ Interfaz web simple y rápida con Streamlit.
+- ✅ Soporte para múltiples campos de entrada desde el CSV.
 
-### 4. Factory (Adicional)
-**Problema:** Crear objetos sin depender de clases concretas.  
-**Solución:** Usamos una fábrica para abstraer la creación de documentos.
+---
+
+## 🧱 Arquitectura del Proyecto
+
+La siguiente estructura refleja cómo está organizado el código del generador de reportes PDF:
+
+```text
+📦 Proyecto-Integrador-3.8-Patrones-de-dise-o
+├── 📂 builder/
+│   ├── builder_interface.py       # Interfaz que define los pasos del builder
+│   ├── pdf_report_builder.py      # Implementación concreta del builder en formato PDF
+│   └── director.py                # Director que coordina el proceso de construcción
+│
+├── 📂 components/
+│   ├── section.py                 # Define secciones del reporte
+│   ├── text.py                    # Componente para texto simple
+│   └── report_components.py       # Conjunto de componentes reutilizables
+│
+├── 📂 generator/
+│   └── detailed_report.py         # Clase que instancia builder y director para generar el reporte
+│
+├── 📂 docs/
+│   └── USAGE.csv                  # Archivo CSV de ejemplo para generar reportes
+│
+├── 📄 app.py                      # Punto de entrada principal de la aplicación con Streamlit
+├── 📄 requirements.txt            # Dependencias del proyecto
+└── 📄 README.md                   # Documentación del proyecto
+
+---
+
+## ⚙️ Requisitos
+
+| Recurso     | Versión mínima | Notas                              |
+|-------------|----------------|------------------------------------|
+| Python      | 3.9            | Probado en 3.9 – 3.12              |
+| pip         | 23.x           | Gestor de paquetes de Python       |
+| Streamlit   | 1.34           | Ya viene en `requirements.txt`     |
+| ReportLab   | 4.x            | Usado para generar el PDF          |
+
+
+---
+
+## 🛠️ Instalación
+
+```bash
+git clone https://github.com/TU-USUARIO/Proyecto-Integrador-3.8-Patrones-de-dise-o.git
+cd Proyecto-Integrador-3.8-Patrones-de-dise-o
+
+# Crear y activar entorno virtual (Windows PowerShell)
+python -m venv venv
+.\venv\Scripts\activate
+
+# Instalar dependencias
+pip install -r requirements.txt
